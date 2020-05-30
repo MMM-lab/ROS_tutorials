@@ -5,18 +5,19 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "add_two_ints_client");
-  if (argc != 3)
+  if (argc != 2)
   {
-    ROS_INFO("usage: add_two_ints_client X Y");
+    ROS_INFO("only one please");
     return 1;
   }
 
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<beginner_tutorials::NicName>("nic_name");
   beginner_tutorials::NicName srv;
-  srv.request.name = "toko";
+  srv.request.name = argv[1];
   if (client.call(srv))
   {
+    ROS_INFO("your name is: %s", argv[1]);
     ROS_INFO("your nic name is: %s", srv.response.nic_name.c_str());
   }
   else
