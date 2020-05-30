@@ -16,7 +16,7 @@ int main(int argc, char **argv)
         msg.data  = count;
 
         std::stringstream ss;
-        ss << "Hello" << count;
+        ss << "Hello";
         msg.name = ss.str();
 
         ROS_INFO("%d", msg.stamp.sec);
