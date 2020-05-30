@@ -19,6 +19,11 @@ add_message_files(
     Num.msg
 )
 
+add_service_files(
+  FILES
+  NicName.srv
+)
+
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
     DEPENDENCIES
@@ -60,3 +65,10 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
+add_executable(nic_name_server src/nic_name_server.cpp)
+target_link_libraries(nic_name_server ${catkin_LIBRARIES})
+add_dependencies(nic_name_server beginner_tutorials_gencpp)
+
+add_executable(nic_name_client src/nic_name_client.cpp)
+target_link_libraries(nic_name_client ${catkin_LIBRARIES})
+add_dependencies(nic_name_client beginner_tutorials_gencpp)
